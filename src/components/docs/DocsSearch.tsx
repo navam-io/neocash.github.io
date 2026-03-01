@@ -23,8 +23,9 @@ export default function DocsSearch() {
     if (pagefindRef.current) return;
     if (import.meta.env.DEV) return; // Pagefind index only exists after build
     try {
-      // @ts-ignore - Pagefind JS is generated post-build by `pagefind --site dist`
-      pagefindRef.current = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
+      // Build the path dynamically so Vite's SSR transform cannot statically resolve it
+      const path = '/pagefind/pagefind.js';
+      pagefindRef.current = await import(/* @vite-ignore */ path);
       await pagefindRef.current.init();
     } catch {
       // Pagefind not available
