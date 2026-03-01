@@ -47,6 +47,14 @@ export default function DocsSearch() {
   }, []);
 
   useEffect(() => {
+    const btn = document.getElementById('docs-search-btn');
+    if (!btn) return;
+    const handleClick = () => setIsOpen(true);
+    btn.addEventListener('click', handleClick);
+    return () => btn.removeEventListener('click', handleClick);
+  }, []);
+
+  useEffect(() => {
     if (isOpen) {
       loadPagefind();
       setTimeout(() => inputRef.current?.focus(), 50);
