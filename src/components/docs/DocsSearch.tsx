@@ -21,12 +21,13 @@ export default function DocsSearch() {
 
   const loadPagefind = useCallback(async () => {
     if (pagefindRef.current) return;
+    if (import.meta.env.DEV) return; // Pagefind index only exists after build
     try {
       // @ts-ignore - Pagefind JS is generated post-build by `pagefind --site dist`
       pagefindRef.current = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
       await pagefindRef.current.init();
     } catch {
-      // Pagefind not available in dev mode
+      // Pagefind not available
     }
   }, []);
 

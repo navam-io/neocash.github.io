@@ -14,5 +14,8 @@ export default defineConfig({
         external: ['/pagefind/pagefind.js'],
       },
     },
+    ssr: {
+      external: ['/pagefind/pagefind.js'],
+    },
   },
 });

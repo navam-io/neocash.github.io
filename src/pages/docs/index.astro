@@ -36,7 +36,7 @@ const description = 'Complete guide to NeoCash — privacy-first AI wealth manag
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {docsNav.map((section) => {
           const firstItem = section.items[0];
-          const href = `/docs/${firstItem.slug === 'index' ? firstItem.slug.replace('/index', '/') : firstItem.slug}/`;
+          const href = `/docs/${firstItem.slug.endsWith('/index') ? firstItem.slug.slice(0, -'/index'.length) : firstItem.slug}/`;
           return (
             <a
               href={href}

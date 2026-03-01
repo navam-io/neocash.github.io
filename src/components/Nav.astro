@@ -8,7 +8,7 @@ const navLinks = [
 ];
 ---
 
-<nav class="sticky top-0 z-50 transition-all duration-300" data-scrolled="false">
+<nav class="sticky top-0 z-50 transition-all duration-300" data-scrolled="false" data-menu-open="false">
   <div class="mx-auto max-w-[1280px] px-6 h-16 flex items-center justify-between">
     <!-- Wordmark -->
     <a href="/" class="font-display font-bold text-2xl tracking-tight text-text">
@@ -34,6 +34,42 @@ const navLinks = [
     >
       Get Started
     </a>
+
+    <!-- Mobile hamburger button -->
+    <button
+      class="md:hidden relative w-10 h-10 flex items-center justify-center text-text"
+      aria-label="Toggle menu"
+      data-menu-toggle
+    >
+      <svg class="menu-icon-open w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg class="menu-icon-close w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-menu hidden md:hidden" data-mobile-menu>
+    <div class="px-6 py-6 flex flex-col gap-4 border-t border-[#e5e3dc]">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class="font-body text-lg text-text hover:text-accent transition-colors duration-200 py-1"
+          data-mobile-link
+        >
+          {label}
+        </a>
+      ))}
+      <a
+        href="#hero"
+        class="inline-flex items-center justify-center bg-accent text-white rounded-full px-5 py-2.5 text-sm font-medium hover:bg-accent-hover transition-colors duration-200 mt-2"
+        data-mobile-link
+      >
+        Get Started
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -44,15 +80,48 @@ const navLinks = [
     -webkit-backdrop-filter: blur(16px);
     box-shadow: var(--shadow-warm-sm);
   }
+
+  nav[data-menu-open="true"] {
+    background-color: rgba(250, 249, 245, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  nav[data-menu-open="true"] .menu-icon-open {
+    display: none;
+  }
+
+  nav[data-menu-open="true"] .menu-icon-close {
+    display: block;
+  }
+
+  nav[data-menu-open="true"] .mobile-menu {
+    display: block;
+  }
 </style>
 
 <script>
   const nav = document.querySelector('nav');
   if (nav) {
+    // Scroll detection
     const update = () => {
       nav.dataset.scrolled = window.scrollY > 20 ? 'true' : 'false';
     };
     window.addEventListener('scroll', update, { passive: true });
     update();
+
+    // Mobile menu toggle
+    const toggle = nav.querySelector('[data-menu-toggle]');
+    toggle?.addEventListener('click', () => {
+      const isOpen = nav.dataset.menuOpen === 'true';
+      nav.dataset.menuOpen = isOpen ? 'false' : 'true';
+    });
+
+    // Close mobile menu when a link is clicked
+    nav.querySelectorAll('[data-mobile-link]').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.dataset.menuOpen = 'false';
+      });
+    });
   }
 </script>
