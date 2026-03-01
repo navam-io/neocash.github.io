@@ -130,6 +130,12 @@ export function getPrevNext(slug: string): { prev: NavItem | null; next: NavItem
   };
 }
 
+/** Convert a nav slug to its docs href */
+export function slugToHref(slug: string): string {
+  const normalized = slug.endsWith('/index') ? slug.slice(0, -'/index'.length) : slug;
+  return `/docs/${normalized}/`;
+}
+
 /** Find which section a slug belongs to */
 export function getSectionForSlug(slug: string): NavSection | undefined {
   return docsNav.find((section) => section.items.some((item) => item.slug === slug));

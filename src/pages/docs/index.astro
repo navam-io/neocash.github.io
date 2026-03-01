@@ -3,7 +3,7 @@ import '../../styles/global.css';
 import '../../styles/docs.css';
 import DocsNav from '../../components/docs/DocsNav.astro';
 import DocsSearch from '../../components/docs/DocsSearch.tsx';
-import { docsNav } from '../../data/docs-navigation';
+import { docsNav, slugToHref } from '../../data/docs-navigation';
 
 const title = 'NeoCash Documentation';
 const description = 'Complete guide to NeoCash — privacy-first AI wealth management. Covers chat, goals, dashboard, signals, memory, documents, agents, and developer API reference.';
@@ -36,7 +36,7 @@ const description = 'Complete guide to NeoCash — privacy-first AI wealth manag
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {docsNav.map((section) => {
           const firstItem = section.items[0];
-          const href = `/docs/${firstItem.slug.endsWith('/index') ? firstItem.slug.slice(0, -'/index'.length) : firstItem.slug}/`;
+          const href = slugToHref(firstItem.slug);
           return (
             <a
               href={href}

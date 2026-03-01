@@ -1,5 +1,5 @@
 ---
-import { getPrevNext } from '../../data/docs-navigation';
+import { getPrevNext, slugToHref } from '../../data/docs-navigation';
 
 interface Props {
   currentSlug: string;
@@ -13,7 +13,7 @@ const { prev, next } = getPrevNext(currentSlug);
   <nav class="mt-12 pt-6 border-t border-[#e5e3dc] flex items-center justify-between gap-4">
     {prev ? (
       <a
-        href={`/docs/${prev.slug === 'index' ? '' : prev.slug}/`}
+        href={slugToHref(prev.slug)}
         class="group flex items-center gap-2 text-sm text-text-muted hover:text-accent transition-colors"
       >
         <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,7 +24,7 @@ const { prev, next } = getPrevNext(currentSlug);
     ) : <span />}
     {next ? (
       <a
-        href={`/docs/${next.slug === 'index' ? '' : next.slug}/`}
+        href={slugToHref(next.slug)}
         class="group flex items-center gap-2 text-sm text-text-muted hover:text-accent transition-colors ml-auto"
       >
         <span>{next.label}</span>

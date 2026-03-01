@@ -1,5 +1,5 @@
 ---
-import { docsNav } from '../../data/docs-navigation';
+import { docsNav, slugToHref } from '../../data/docs-navigation';
 
 interface Props {
   currentSlug?: string;
@@ -21,7 +21,7 @@ const { currentSlug } = Astro.props;
             return (
               <li>
                 <a
-                  href={`/docs/${item.slug === 'index' ? '' : item.slug}/`}
+                  href={slugToHref(item.slug)}
                   class:list={[
                     'block px-2 py-1.5 rounded-md text-sm transition-colors duration-150',
                     isActive
@@ -64,7 +64,7 @@ const { currentSlug } = Astro.props;
             return (
               <li>
                 <a
-                  href={`/docs/${item.slug === 'index' ? '' : item.slug}/`}
+                  href={slugToHref(item.slug)}
                   class:list={[
                     'block px-2 py-1.5 rounded-md text-sm transition-colors',
                     isActive
