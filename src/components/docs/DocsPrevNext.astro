@@ -1,0 +1,37 @@
+---
+import { getPrevNext } from '../../data/docs-navigation';
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+const { prev, next } = getPrevNext(currentSlug);
+---
+
+{(prev || next) && (
+  <nav class="mt-12 pt-6 border-t border-[#e5e3dc] flex items-center justify-between gap-4">
+    {prev ? (
+      <a
+        href={`/docs/${prev.slug === 'index' ? '' : prev.slug}/`}
+        class="group flex items-center gap-2 text-sm text-text-muted hover:text-accent transition-colors"
+      >
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>{prev.label}</span>
+      </a>
+    ) : <span />}
+    {next ? (
+      <a
+        href={`/docs/${next.slug === 'index' ? '' : next.slug}/`}
+        class="group flex items-center gap-2 text-sm text-text-muted hover:text-accent transition-colors ml-auto"
+      >
+        <span>{next.label}</span>
+        <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    ) : <span />}
+  </nav>
+)}

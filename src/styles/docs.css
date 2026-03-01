@@ -1,0 +1,186 @@
+/* === Docs Prose Styling === */
+
+.docs-prose {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.docs-prose h1 {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.docs-prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e3dc;
+}
+
+.docs-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.docs-prose h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.docs-prose p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.docs-prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.docs-prose a:hover {
+  color: var(--color-accent-hover);
+}
+
+.docs-prose strong {
+  font-weight: 600;
+}
+
+.docs-prose ul,
+.docs-prose ol {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.docs-prose li {
+  margin-bottom: 0.375rem;
+}
+
+.docs-prose li > ul,
+.docs-prose li > ol {
+  margin-top: 0.375rem;
+  margin-bottom: 0;
+}
+
+.docs-prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding: 0.5rem 1rem;
+  margin: 1.25rem 0;
+  background: var(--color-bg-alt);
+  border-radius: 0 8px 8px 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.docs-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Inline code */
+.docs-prose code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-bg-alt);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  border: 1px solid #e5e3dc;
+}
+
+/* Code blocks */
+.docs-prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+.docs-prose pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+}
+
+/* Tables */
+.docs-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.9375rem;
+}
+
+.docs-prose thead th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 2px solid #e5e3dc;
+  background: var(--color-bg-alt);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.docs-prose tbody td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid #e5e3dc;
+}
+
+.docs-prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Horizontal rule */
+.docs-prose hr {
+  border: none;
+  border-top: 1px solid #e5e3dc;
+  margin: 2rem 0;
+}
+
+/* Images */
+.docs-prose img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Headings anchor links */
+.docs-prose h2[id],
+.docs-prose h3[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Definition lists (used in API reference) */
+.docs-prose dt {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.docs-prose dd {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}

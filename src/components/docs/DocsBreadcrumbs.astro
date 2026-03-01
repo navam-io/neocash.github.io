@@ -1,0 +1,31 @@
+---
+import { getSectionForSlug } from '../../data/docs-navigation';
+
+interface Props {
+  currentSlug: string;
+  pageTitle: string;
+}
+
+const { currentSlug, pageTitle } = Astro.props;
+const section = getSectionForSlug(currentSlug);
+---
+
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol class="flex items-center gap-1.5 text-sm text-text-muted">
+    <li>
+      <a href="/docs/" class="hover:text-accent transition-colors">Docs</a>
+    </li>
+    {section && (
+      <>
+        <li aria-hidden="true" class="text-text-muted/40">/</li>
+        <li>
+          <span class="text-text-muted/70">{section.label}</span>
+        </li>
+      </>
+    )}
+    <li aria-hidden="true" class="text-text-muted/40">/</li>
+    <li>
+      <span class="text-text font-medium" aria-current="page">{pageTitle}</span>
+    </li>
+  </ol>
+</nav>

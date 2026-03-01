@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import BrowserMockup from './BrowserMockup.astro';
+import goalDashboardImg from '../assets/screenshots/desktop/07-goal-dashboard.png';
+import memoryFactsImg from '../assets/screenshots/desktop/09-memory-facts.png';
+import goalThreadImg from '../assets/screenshots/desktop/06-goal-thread.png';
+import fileUploadImg from '../assets/screenshots/desktop/04-chat-file-upload.png';
+
+const screenshotMap = [goalDashboardImg, memoryFactsImg, goalThreadImg, fileUploadImg];
+
+const features = [
+  {
+    eyebrow: 'Structured Approach',
+    heading: 'Eight goals. One financial picture.',
+    copy: 'Organize your finances across eight life categories\u00a0\u2014 from retirement planning to education funding. Each goal gets dedicated AI analysis while insights flow freely between them.',
+    screenshot: 'Goal Dashboard',
+    bg: 'bg-bg',
+  },
+  {
+    eyebrow: 'Intelligent Memory',
+    heading: 'It remembers what matters.',
+    copy: 'Unlike chatbots that forget everything, NeoCash builds a persistent memory of your financial facts, preferences, and decisions. Every conversation picks up exactly where you left off.',
+    screenshot: 'Memory & Context',
+    bg: 'bg-bg-alt',
+  },
+  {
+    eyebrow: 'Connected Insights',
+    heading: 'Goals that talk to each other.',
+    copy: 'A change to your tax strategy automatically surfaces implications for your retirement plan. NeoCash\u2019s cross-pollination engine connects insights across all your financial goals\u00a0\u2014 nothing exists in a silo.',
+    screenshot: 'Cross-Pollination Signal',
+    bg: 'bg-bg',
+  },
+  {
+    eyebrow: 'Document Analysis',
+    heading: 'Upload. Analyze. Understand.',
+    copy: 'Drop in your tax returns, investment statements, or insurance policies. NeoCash extracts key data, identifies opportunities, and connects findings to your broader financial picture\u00a0\u2014 all processed locally.',
+    screenshot: 'Document Analysis',
+    bg: 'bg-bg-alt',
+  },
+];
+---
+
+<section id="features">
+  {features.map((feature, index) => {
+    const isOdd = index % 2 === 0; /* 0-indexed: items 0,2 are "odd" blocks (1st,3rd) */
+    return (
+      <div class:list={[feature.bg, 'py-16 md:py-24']}>
+        <div class="mx-auto max-w-[1280px] px-6">
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center" data-animate>
+            {/* Copy column */}
+            <div class:list={[isOdd ? 'md:order-1' : 'md:order-2']}>
+              <span class="font-mono text-xs text-accent uppercase tracking-[0.2em]">
+                {feature.eyebrow}
+              </span>
+              <h2 class="font-display text-3xl md:text-[40px] md:leading-[1.2] text-text mt-4">
+                {feature.heading}
+              </h2>
+              <p class="font-body text-base text-text-muted leading-relaxed mt-4">
+                {feature.copy}
+              </p>
+            </div>
+            {/* Screenshot column */}
+            <div class:list={[isOdd ? 'md:order-2' : 'md:order-1']}>
+              <BrowserMockup>
+                <Image src={screenshotMap[index]} alt={feature.screenshot} class="w-full" />
+              </BrowserMockup>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</section>

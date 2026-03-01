@@ -1,0 +1,58 @@
+---
+const navLinks = [
+  { label: 'Features', href: '#features' },
+  { label: 'Agents', href: '#agents' },
+  { label: 'Privacy', href: '#privacy' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Docs', href: '/docs/' },
+];
+---
+
+<nav class="sticky top-0 z-50 transition-all duration-300" data-scrolled="false">
+  <div class="mx-auto max-w-[1280px] px-6 h-16 flex items-center justify-between">
+    <!-- Wordmark -->
+    <a href="/" class="font-display font-bold text-2xl tracking-tight text-text">
+      NeoCash
+    </a>
+
+    <!-- Center links (hidden on mobile) -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class="font-body text-sm text-text-muted hover:text-accent transition-colors duration-200"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA button (hidden on mobile) -->
+    <a
+      href="#hero"
+      class="hidden md:inline-flex items-center bg-accent text-white rounded-full px-5 py-2 text-sm font-medium hover:bg-accent-hover transition-colors duration-200"
+    >
+      Get Started
+    </a>
+  </div>
+</nav>
+
+<style>
+  nav[data-scrolled="true"] {
+    background-color: rgba(250, 249, 245, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-warm-sm);
+  }
+</style>
+
+<script>
+  const nav = document.querySelector('nav');
+  if (nav) {
+    const update = () => {
+      nav.dataset.scrolled = window.scrollY > 20 ? 'true' : 'false';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>

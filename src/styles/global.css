@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* === Font Imports === */
+@import "@fontsource/newsreader/400.css";
+@import "@fontsource/newsreader/400-italic.css";
+@import "@fontsource/newsreader/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+
+/* === Tailwind v4 Theme Configuration === */
+@theme {
+  --color-bg: #faf9f5;
+  --color-bg-alt: #f0efe9;
+  --color-bg-dark: #2a2622;
+  --color-accent: #c4704b;
+  --color-accent-hover: #b3603d;
+  --color-text: #2a2622;
+  --color-text-muted: #6b6b67;
+  --color-text-light: #faf9f5;
+
+  --font-display: 'Newsreader', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-warm-sm: 0 1px 3px rgba(42, 38, 34, 0.08), 0 1px 2px rgba(42, 38, 34, 0.06);
+  --shadow-warm: 0 4px 12px rgba(42, 38, 34, 0.1), 0 2px 4px rgba(42, 38, 34, 0.06);
+  --shadow-warm-lg: 0 12px 32px rgba(42, 38, 34, 0.12), 0 4px 8px rgba(42, 38, 34, 0.08);
+}
+
+/* === Base Styles === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Paper-grain noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Focus-visible styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scroll-triggered animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-animate][data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}

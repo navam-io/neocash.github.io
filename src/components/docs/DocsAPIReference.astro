@@ -1,0 +1,71 @@
+---
+interface APIItem {
+  name: string;
+  signature?: string;
+  description: string;
+  params?: { name: string; type: string; description: string }[];
+  returns?: string;
+  example?: string;
+}
+
+interface Props {
+  title: string;
+  items: APIItem[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="my-8">
+  <h3 class="font-display text-lg font-bold mb-4">{title}</h3>
+  <div class="space-y-6">
+    {items.map((item) => (
+      <div class="rounded-lg border border-[#e5e3dc] overflow-hidden">
+        <div class="bg-bg-alt px-4 py-3 border-b border-[#e5e3dc]">
+          <h4 class="font-mono text-sm font-semibold text-text">{item.name}</h4>
+          {item.signature && (
+            <code class="block mt-1 text-xs text-text-muted font-mono">{item.signature}</code>
+          )}
+        </div>
+        <div class="px-4 py-3 space-y-3">
+          <p class="text-sm text-text-muted">{item.description}</p>
+          {item.params && item.params.length > 0 && (
+            <div>
+              <h5 class="text-xs font-semibold uppercase tracking-wide text-text-muted/70 mb-2">Parameters</h5>
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-[#e5e3dc]">
+                    <th class="text-left py-1.5 pr-3 font-medium text-xs">Name</th>
+                    <th class="text-left py-1.5 pr-3 font-medium text-xs">Type</th>
+                    <th class="text-left py-1.5 font-medium text-xs">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {item.params.map((param) => (
+                    <tr class="border-b border-[#e5e3dc] last:border-0">
+                      <td class="py-1.5 pr-3 font-mono text-xs text-accent">{param.name}</td>
+                      <td class="py-1.5 pr-3 font-mono text-xs text-text-muted">{param.type}</td>
+                      <td class="py-1.5 text-xs text-text-muted">{param.description}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {item.returns && (
+            <div>
+              <h5 class="text-xs font-semibold uppercase tracking-wide text-text-muted/70 mb-1">Returns</h5>
+              <code class="text-xs font-mono text-text-muted">{item.returns}</code>
+            </div>
+          )}
+          {item.example && (
+            <div>
+              <h5 class="text-xs font-semibold uppercase tracking-wide text-text-muted/70 mb-1">Example</h5>
+              <pre class="bg-bg-dark text-text-light text-xs p-3 rounded-md overflow-x-auto"><code>{item.example}</code></pre>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

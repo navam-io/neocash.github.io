@@ -1,0 +1,33 @@
+---
+interface Props {
+  personas: ('general-user' | 'power-user' | 'developer')[];
+}
+
+const { personas } = Astro.props;
+
+const badgeStyles: Record<string, { label: string; classes: string }> = {
+  'general-user': {
+    label: 'General',
+    classes: 'bg-blue-50 text-blue-700 border-blue-200',
+  },
+  'power-user': {
+    label: 'Power User',
+    classes: 'bg-purple-50 text-purple-700 border-purple-200',
+  },
+  developer: {
+    label: 'Developer',
+    classes: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  },
+};
+---
+
+<div class="flex items-center gap-2 mb-4">
+  {personas.map((p) => {
+    const badge = badgeStyles[p];
+    return badge ? (
+      <span class:list={['inline-block text-xs font-medium px-2 py-0.5 rounded-full border', badge.classes]}>
+        {badge.label}
+      </span>
+    ) : null;
+  })}
+</div>

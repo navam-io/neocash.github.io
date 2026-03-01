@@ -1,0 +1,22 @@
+---
+import BrowserMockup from '../BrowserMockup.astro';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+const { src, alt, caption } = Astro.props;
+---
+
+<figure class="my-6">
+  <BrowserMockup>
+    <img src={src} alt={alt} class="w-full" loading="lazy" decoding="async" />
+  </BrowserMockup>
+  {caption && (
+    <figcaption class="mt-2 text-center text-sm text-text-muted italic">
+      {caption}
+    </figcaption>
+  )}
+</figure>

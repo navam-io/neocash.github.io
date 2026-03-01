@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import BrowserMockup from './BrowserMockup.astro';
+import heroImg from '../assets/screenshots/desktop/01-new-chat.png';
+---
+
+<section id="hero" class="pt-24 pb-16 md:pt-32 md:pb-20">
+  <div class="mx-auto max-w-[1280px] px-6">
+    <!-- Headline -->
+    <h1 class="font-display text-4xl md:text-[56px] md:leading-tight text-center text-text font-normal">
+      Your money. Your data. Your device.
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="font-body text-lg md:text-xl text-text-muted text-center max-w-xl mx-auto mt-6">
+      Personal wealth management, without the institution.
+    </p>
+
+    <!-- CTA Button -->
+    <div class="mt-10 text-center">
+      <a
+        href="#features"
+        class="inline-block bg-accent text-white rounded-full px-8 py-3.5 text-base font-medium hover:bg-accent-hover transition-all duration-200 shadow-warm-sm hover:shadow-warm"
+      >
+        Start Managing Your Wealth
+      </a>
+    </div>
+
+    <!-- Screenshot area -->
+    <div class="relative max-w-6xl mx-auto mt-16" style="width: 80%;">
+      <!-- Copper radial glow behind mockup -->
+      <div class="absolute -inset-10 rounded-3xl -z-10 blur-3xl" style="background: radial-gradient(ellipse at center, rgba(196, 112, 75, 0.06), transparent);"></div>
+
+      <BrowserMockup>
+        <Image src={heroImg} alt="NeoCash AI wealth management dashboard showing new chat with financial categories" class="w-full" />
+      </BrowserMockup>
+    </div>
+  </div>
+</section>

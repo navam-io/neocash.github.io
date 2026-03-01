@@ -1,0 +1,108 @@
+---
+import { docsNav } from '../../data/docs-navigation';
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug } = Astro.props;
+---
+
+<aside id="docs-sidebar" class="docs-sidebar w-[260px] shrink-0 hidden lg:block">
+  <nav class="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto pb-8 pr-4">
+    {docsNav.map((section) => (
+      <div class="mb-4">
+        <h3 class="font-body font-semibold text-xs uppercase tracking-[0.1em] text-text-muted/70 mb-2 px-2">
+          {section.label}
+        </h3>
+        <ul class="space-y-0.5">
+          {section.items.map((item) => {
+            const isActive = currentSlug === item.slug;
+            return (
+              <li>
+                <a
+                  href={`/docs/${item.slug === 'index' ? '' : item.slug}/`}
+                  class:list={[
+                    'block px-2 py-1.5 rounded-md text-sm transition-colors duration-150',
+                    isActive
+                      ? 'bg-accent/10 text-accent font-medium'
+                      : 'text-text-muted hover:text-text hover:bg-bg-alt',
+                  ]}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </nav>
+</aside>
+
+<!-- Mobile sidebar drawer -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/30 z-40 hidden lg:hidden"></div>
+<aside id="mobile-sidebar" class="fixed top-0 left-0 z-50 w-[280px] h-full bg-bg border-r border-[#e5e3dc] transform -translate-x-full transition-transform duration-200 lg:hidden overflow-y-auto">
+  <div class="p-4 border-b border-[#e5e3dc] flex items-center justify-between">
+    <span class="font-display font-bold text-lg">Docs</span>
+    <button id="close-sidebar" class="p-1 rounded hover:bg-bg-alt transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <nav class="p-4">
+    {docsNav.map((section) => (
+      <div class="mb-4">
+        <h3 class="font-body font-semibold text-xs uppercase tracking-[0.1em] text-text-muted/70 mb-2">
+          {section.label}
+        </h3>
+        <ul class="space-y-0.5">
+          {section.items.map((item) => {
+            const isActive = currentSlug === item.slug;
+            return (
+              <li>
+                <a
+                  href={`/docs/${item.slug === 'index' ? '' : item.slug}/`}
+                  class:list={[
+                    'block px-2 py-1.5 rounded-md text-sm transition-colors',
+                    isActive
+                      ? 'bg-accent/10 text-accent font-medium'
+                      : 'text-text-muted hover:text-text hover:bg-bg-alt',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </nav>
+</aside>
+
+<script>
+  function initSidebar() {
+    const overlay = document.getElementById('sidebar-overlay');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const closeBtn = document.getElementById('close-sidebar');
+    const openBtn = document.getElementById('open-sidebar');
+
+    function open() {
+      sidebar?.classList.remove('-translate-x-full');
+      overlay?.classList.remove('hidden');
+    }
+    function close() {
+      sidebar?.classList.add('-translate-x-full');
+      overlay?.classList.add('hidden');
+    }
+
+    openBtn?.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    overlay?.addEventListener('click', close);
+  }
+  initSidebar();
+  document.addEventListener('astro:after-swap', initSidebar);
+</script>

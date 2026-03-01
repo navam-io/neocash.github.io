@@ -1,0 +1,47 @@
+---
+interface Props {
+  type?: 'info' | 'tip' | 'warning' | 'danger';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const styles = {
+  info: {
+    border: 'border-accent/40',
+    bg: 'bg-accent/5',
+    icon: '💡',
+    defaultTitle: 'Note',
+  },
+  tip: {
+    border: 'border-emerald-500/40',
+    bg: 'bg-emerald-50',
+    icon: '✅',
+    defaultTitle: 'Tip',
+  },
+  warning: {
+    border: 'border-amber-500/40',
+    bg: 'bg-amber-50',
+    icon: '⚠️',
+    defaultTitle: 'Warning',
+  },
+  danger: {
+    border: 'border-red-500/40',
+    bg: 'bg-red-50',
+    icon: '🚨',
+    defaultTitle: 'Danger',
+  },
+};
+
+const s = styles[type];
+const displayTitle = title || s.defaultTitle;
+---
+
+<aside class:list={['my-5 rounded-lg border-l-4 p-4', s.border, s.bg]}>
+  <p class="font-body font-semibold text-sm mb-1">
+    <span class="mr-1.5">{s.icon}</span>{displayTitle}
+  </p>
+  <div class="text-sm text-text-muted [&>p]:mb-2 [&>p:last-child]:mb-0">
+    <slot />
+  </div>
+</aside>
