@@ -19,11 +19,34 @@ import heroImg from '../assets/screenshots/desktop/01-new-chat.png';
     <!-- CTA Button -->
     <div class="mt-10 text-center">
       <a
-        href="#features"
+        href="https://github.com/navam-io/neocash?tab=readme-ov-file#quick-start"
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-block bg-accent text-white rounded-full px-8 py-3.5 text-base font-medium hover:bg-accent-hover transition-all duration-200 shadow-warm-sm hover:shadow-warm"
       >
         Start Managing Your Wealth
       </a>
+    </div>
+
+    <!-- Quick Start Terminal -->
+    <div class="max-w-2xl mx-auto mt-12">
+      <div class="bg-bg-dark rounded-xl border border-accent/15 shadow-warm-lg overflow-hidden">
+        <!-- Terminal title bar -->
+        <div class="flex items-center gap-2 px-4 py-2.5 border-b border-white/5">
+          <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+          <span class="ml-2 text-xs font-mono text-white/30">Terminal</span>
+        </div>
+        <!-- Terminal body -->
+        <div class="px-5 py-4 font-mono text-sm leading-relaxed">
+          <p><span class="text-accent">$</span> <span class="text-white/85">git clone https://github.com/manavsehgal/neocash.git</span></p>
+          <p><span class="text-accent">$</span> <span class="text-white/85">cd neocash</span></p>
+          <p><span class="text-accent">$</span> <span class="text-white/85">cp .env.example .env.local</span>  <span class="text-accent/60"># add your Anthropic API key</span></p>
+          <p><span class="text-accent">$</span> <span class="text-white/85">npm install</span></p>
+          <p><span class="text-accent">$</span> <span class="text-white/85">npm run dev</span></p>
+        </div>
+      </div>
     </div>
 
     <!-- Screenshot area -->
