@@ -4,6 +4,7 @@ description: "Create your own financial goals with automatic AI categorization."
 personas: ["general-user", "power-user"]
 section: "Goals"
 order: 4
+heroScreenshot: "goal-creation"
 ---
 
 ## Why Custom Goals?

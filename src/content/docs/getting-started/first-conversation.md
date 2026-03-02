@@ -4,6 +4,7 @@ description: "Start your first AI-powered financial conversation with NeoCash."
 personas: ["general-user"]
 section: "Getting Started"
 order: 2
+heroScreenshot: "new-chat"
 ---
 
 ## Overview

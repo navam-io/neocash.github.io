@@ -4,6 +4,7 @@ description: "Track your financial goal progress with AI-powered dashboards."
 personas: ["general-user", "power-user"]
 section: "Dashboard"
 order: 1
+heroScreenshot: "goal-dashboard"
 ---
 
 ## What Are Dashboards?

@@ -4,6 +4,7 @@ description: "How NeoCash's specialist AI agents provide expert financial guidan
 personas: ["general-user", "power-user"]
 section: "Agents"
 order: 1
+heroScreenshot: "research-mode"
 ---
 
 ## What Are AI Agents in NeoCash?

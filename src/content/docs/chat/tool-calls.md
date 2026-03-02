@@ -4,6 +4,7 @@ description: "How NeoCash uses AI tools to perform financial calculations and an
 personas: ["power-user", "developer"]
 section: "Chat"
 order: 6
+heroScreenshot: "tool-calls"
 ---
 
 ## What Are Tool Calls

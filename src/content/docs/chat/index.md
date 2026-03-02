@@ -4,6 +4,7 @@ description: "Understanding NeoCash's AI-powered financial chat interface."
 personas: ["general-user", "power-user"]
 section: "Chat"
 order: 1
+heroScreenshot: "active-chat"
 ---
 
 ## Your Financial Command Center

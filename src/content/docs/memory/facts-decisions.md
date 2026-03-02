@@ -4,6 +4,7 @@ description: "Understanding the two types of financial memory: profile facts and
 personas: ["general-user", "power-user"]
 section: "Memory"
 order: 2
+heroScreenshot: "memory-decisions"
 ---
 
 ## Two Types of Financial Memory

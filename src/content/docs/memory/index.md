@@ -4,6 +4,7 @@ description: "How NeoCash remembers your financial context across conversations.
 personas: ["general-user", "power-user"]
 section: "Memory"
 order: 1
+heroScreenshot: "memory-facts"
 ---
 
 ## What is NeoCash Memory?

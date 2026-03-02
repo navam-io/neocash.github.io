@@ -8,6 +8,9 @@ import DocsPrevNext from '../components/docs/DocsPrevNext.astro';
 import DocsBreadcrumbs from '../components/docs/DocsBreadcrumbs.astro';
 import DocsPersonaBadge from '../components/docs/DocsPersonaBadge.astro';
 import DocsSearch from '../components/docs/DocsSearch.tsx';
+import { Image } from 'astro:assets';
+import BrowserMockup from '../components/BrowserMockup.astro';
+import { docsScreenshots } from '../data/docs-screenshots';
 
 interface TocItem {
   depth: number;
@@ -19,11 +22,13 @@ interface Props {
   title: string;
   description: string;
   personas?: ('general-user' | 'power-user' | 'developer')[];
+  heroScreenshot?: string;
   currentSlug: string;
   headings: TocItem[];
 }
 
-const { title, description, personas, currentSlug, headings } = Astro.props;
+const { title, description, personas, heroScreenshot, currentSlug, headings } = Astro.props;
+const heroImage = heroScreenshot ? docsScreenshots[heroScreenshot] : null;
 const pageTitle = `${title} — NeoCash Docs`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -70,8 +75,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           <DocsBreadcrumbs currentSlug={currentSlug} pageTitle={title} />
           {personas && personas.length > 0 && <DocsPersonaBadge personas={personas} />}
 
-          <article class="docs-prose">
+          <article class="docs-prose" data-pagefind-body>
             <h1>{title}</h1>
+            {heroImage && (
+              <figure class="my-6 not-prose">
+                <BrowserMockup>
+                  <Image src={heroImage} alt={title} class="w-full" loading="eager" />
+                </BrowserMockup>
+              </figure>
+            )}
             <slot />
           </article>
 

@@ -4,6 +4,7 @@ description: "Customize your dashboard metrics and layout with the schema editor
 personas: ["power-user", "developer"]
 section: "Dashboard"
 order: 4
+heroScreenshot: "dashboard-schema"
 ---
 
 ## What Is the Schema Editor?

@@ -4,6 +4,7 @@ description: "A visual walkthrough of NeoCash's key interface elements and navig
 personas: ["general-user"]
 section: "Getting Started"
 order: 3
+heroScreenshot: "sidebar-full"
 ---
 
 ## Overview

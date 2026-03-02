@@ -4,6 +4,7 @@ description: "How NeoCash streams AI responses and lets you choose between Claud
 personas: ["general-user", "power-user"]
 section: "Chat"
 order: 3
+heroScreenshot: "model-selector"
 ---
 
 ## Real-Time Streaming

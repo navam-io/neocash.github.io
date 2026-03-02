@@ -4,6 +4,7 @@ description: "How NeoCash helps you set, track, and achieve financial goals with
 personas: ["general-user", "power-user"]
 section: "Goals"
 order: 1
+heroScreenshot: "goal-thread"
 ---
 
 ## What Are Goals in NeoCash?

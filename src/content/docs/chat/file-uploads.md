@@ -4,6 +4,7 @@ description: "Upload and analyze financial documents directly in your conversati
 personas: ["general-user", "power-user"]
 section: "Chat"
 order: 4
+heroScreenshot: "file-upload"
 ---
 
 ## Bringing Your Documents Into Chat
